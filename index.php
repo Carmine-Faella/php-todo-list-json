@@ -6,20 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO LIST</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-black">
 
 
     <div id="app">
 
-        <div class="container">
-            <div class="row">
+    <h1 class="text-center text-white pt-5">To Do List</h1>
+
+        <div class="container d-flex justify-content-center">
+            
+            <div class="row pt-5 col-6">
+
                 <ul class="list-group">
-                    <li class="list-group-item disabled" aria-disabled="true" v-for="item in toDoList">{{item.name}}</li>
+                    <li class="list-group-item disabled" aria-disabled="true" v-for="item in toDoList" :class="item.make == true?'active':''">{{item.name}}</li>
                 </ul>
 
-                <input type="text" v-model="input">
-                <button type="button" class="btn btn-primary" @click="addItem">Inserisci</button>
+                <div class="text-center pt-3">
+                    <input type="text" v-model="input" class="p-2 m-2 rounded border-light">
+                    <button type="button" class="btn btn-primary p-2" @click="addItem">Inserisci</button>
+                </div>
+                
             </div>
         </div>
 
