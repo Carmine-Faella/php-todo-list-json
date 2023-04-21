@@ -1,30 +1,17 @@
 <?php
 
-$toDoList = [
-    [
-        'name'=>'Html',
-        'make'=> false
-    ],
-    [
-        'name'=>'CSS',
-        'make'=> true
-    ],
-    [
-        'name'=>'VueJs',
-        'make'=> false
-    ],
-    [
-        'name'=>'Axios',
-        'make'=> true
-    ],
-    [
-        'name'=>'PHP',
-        'make'=> false
-    ],
-];
+if(file_exists('database.json')){
+    $string = file_get_contents('database.json');
+    $toDoList = json_decode($string, true);
+}else{
+    $toDoList = [];
+}
 
 if(isset($_POST['toDoItem'])){
     $toDoList[] = $_POST['toDoItem'];
+
+    $myString = json_encode($toDoList);
+    file_put_contents('database.json', $myString);
 }
 
 header('Content-Type: application/json');
